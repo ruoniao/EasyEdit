@@ -1,0 +1,308 @@
+/*头部导航栏*/
+.result_header {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 50px;
+    background: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(221, 221, 221);
+}
+
+.head_box {
+    position: relative;
+    width: 60%;
+    height: 50px;
+    margin: 0px auto;
+}
+
+.head_nav {
+    display: inline-block;
+    width: 30%;
+    height: 50px;
+    *zoom: 1;
+    overflow: hidden;
+}
+
+.head_nav:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.head_nav li {
+    float: left;
+}
+
+.head_title {
+    width: 130px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+    color: rgb(15, 136, 235);
+}
+
+.head_index {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.search_box {
+    position: absolute;
+    left: 30%;
+    top: 0px;
+    width: 70%;
+    height: 50px;
+}
+
+.search_bar {
+    position: absolute;
+    left: 10%;
+    top: 0px;
+    width: 70%;
+    height: 10px;
+    line-height: 30px;
+    background: rgb(247, 248, 250);
+    border: 1px solid rgb(231, 234, 241);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    outline: none;
+}
+
+.icon_box {
+    position: absolute;
+    background: none;
+    border: none;
+    left: 80%;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.search_icon {
+    width: 30px;
+    height: 30px;
+}
+
+.ask_btn {
+    position: absolute;
+    left: 90%;
+    top: 50%;
+    width: 10%;
+    height: 32px;
+    line-height: 32px;
+    margin-top: -15px;
+    text-align: center;
+    background: rgb(15, 136, 235);
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.response_content {
+    width: 75%;
+    margin: 72px auto;
+    height: 600px;
+    overflow: auto;
+}
+
+.question_box {
+    line-height: 30px;
+    padding: 0px 20px;
+    font-size: 14px;
+    margin: 20px 0px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 3px;
+}
+
+.question_head {
+    color: rgb(153, 153, 153);
+}
+
+.question_name {
+    color: rgb(13, 115, 218);
+    font-size: 18px;
+}
+
+.question_user {
+    font-weight: bold;
+}
+
+.question_content {
+    width: 100%;
+    line-height: 30px;
+    overflow: hidden;
+    padding: 0px 0px 0px 10px;
+    border: 1px solid rgb(221, 221, 221);
+    outline: none;
+}
+
+.question_bottom {
+    overflow: hidden;
+    *zoom: 1;
+}
+
+.question_bottom:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.guanzhu {
+    float: left;
+    color: rgb(153, 153, 153);
+}
+
+.update {
+    float: left;
+    background: none;
+    border: none;
+    color: blue;
+    margin-top: 3px;
+}
+
+.delete {
+    float: right;
+    color: rgb(178, 34, 34);
+}
+
+.response_box {
+    height: 150px;
+    margin: 20px 0px;
+    line-height: 30px;
+    padding-left: 20px;
+    font-size: 14px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 3px;
+}
+
+.response_user {
+    font-weight: bold;
+}
+
+.response_result {
+    text-indent: 2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*点击对于这个问题，我的想法是......出现的对话框*/
+.message_back {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.message_box {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 50%;
+    width: 40%;
+    height: 300px;
+    margin-left: 30%;
+    margin-top: -175px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.message_head {
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    color: rgb(102, 102, 102);
+    margin: 0px auto;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.guanbi {
+    float: right;
+    font-size: 36px;
+    color: rgb(102, 102, 102);
+}
+
+.message_title {
+    width: 88%;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    padding: 0px 0px 0px 10px;
+    margin-left: 5%;
+    margin-top: 20px;
+    border: 1px solid rgb(221, 221, 221);
+    outline: none;
+}
+
+.message_content {
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 5%;
+    border-radius: 5px;
+}
+
+.message_content .biaoti {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.message_content .neirong {
+    width: 98%;
+    height: 100px;
+    overflow: auto;
+    outline: none;
+}
+
+.message_button {
+    width: 90%;
+    margin: 20px auto;
+    overflow: hidden;
+    *zoom: 1;
+}
+
+.message_button:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.quxiao {
+    float: right;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    background: none;
+    margin: 0px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.fabu {
+    float: right;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    background: rgb(22, 118, 215);
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/core.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/amazeui.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/component.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/page/form.css' %}"/>
+</head>
+<body>
+<div class="account-pages">
+    <div class="wrapper-page">
+        <div class="text-center">
+            <a href="#" class="logo"><span>简易文档共享<span></span></span></a>
+        </div>
+
+        <div class="m-t-40 card-box">
+            <div class="text-center">
+                <h4 class="text-uppercase font-bold m-b-0">欢迎注册</h4>
+            </div>
+            <div class="panel-body">
+                <form class="am-form" action="{% url 'register' %}" method="post">
+                    <div class="am-g">
+                        <div class="am-form-group">
+                            {% if register_form.username %}
+                                <input type="text" class="am-radius" value="用户名格式不正确" name="username">
+                            {% else %}
+
+                                {% if msg %}
+                                    <input type="text" class="am-radius" placeholder="{{ msg }}" name="username">
+
+                                {% else %}
+                                    <input type="text" class="am-radius" placeholder="Username" name="username">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                        <div class="am-form-group form-horizontal m-t-20">
+                            {% if register_form.password %}
+                                <input type="password" class="am-radius" value="密码格式不正确" name="password">
+
+                            {% else %}
+
+                                {% if msg %}
+                                    <input type="password" class="am-radius" placeholder="" name="password">
+
+                                {% else %}
+                                    <input type="password" class="am-radius" placeholder="Password" name="password">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                        <div class="am-form-group ">
+                            <label style="font-weight: normal;color: #999;">
+                                <input type="checkbox" class="remeber"> Remember me
+                            </label>
+                        </div>
+
+                        <div class="am-form-group ">
+                            <button type="submit" class="am-btn am-btn-primary am-radius"
+                                    style="width: 100%;height: 100%;">注册
+                            </button>
+                        </div>
+
+                        <div class="am-form-group ">
+                            <a href="page-recoverpw.html" class="text-muted"><i class="fa fa-lock m-r-5"></i> Forgot
+                                your password?</a>
+                        </div>
+                    </div>
+                    {% csrf_token %}
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
