@@ -3,8 +3,14 @@ from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.hashers import make_password, check_password
 from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timedelta
+import time
 # Create your views here.
+import pymongo
+
+client = pymongo.MongoClient("127.0.0.1", 27017)
+
+db = client.EasyEdit
 from django.views import View
 
 from apps.users.form import RegisterForm, LoginForm
@@ -18,7 +24,9 @@ class CustomBackend(ModelBackend):
             user = UserProfile.objects.get(username=username)
             if user.check_password(password):
                 return user
+
         except Exception as e:
+
             return None
 
 
@@ -59,13 +67,15 @@ class LoginView(View):
             password = request.POST.get("password", "")
             # 在用户登录日志内,若在15分钟内登录错误次数超过3次不允许登录
             # 尝试取出最近的三次，并判断这三次是否全部密码输入错误和最后一次输错密码是在15分钟之内的冻结
-            user_log = tuple(UserLoginLog.objects.filter(username=username).order_by('-login_time')[:3])
+            user_log = list(db.user_login_log.find({"username": "{}".format(username)}).sort("login_time")[:3])
             if len(user_log) >= 3:
                 user_log1, user_log2, user_log3 = user_log
-                if user_log1.is_password == "N" and user_log2.is_password == "N" and user_log3.is_password == "N" and user_log1.login_time >= (
+                if user_log1["is_password"] == "N" and user_log2["is_password"] == "N" and user_log3[
+                    "is_password"] == "N" and user_log1["login_time"] >= (
                             datetime.now() - timedelta(hours=0, minutes=15, seconds=0)):
                     return render(request, "login.html", {"msg": "账号冻结,{}分钟后再试".format(str(
-                            timedelta(hours=0, minutes=15, seconds=0) - (datetime.now() - user_log1.login_time)).split(
+                            timedelta(hours=0, minutes=15, seconds=0) - (
+                            datetime.now() - user_log1["login_time"])).split(
                             ":")[1])})
                 else:
                     user = authenticate(username=username, password=password)
@@ -81,7 +91,6 @@ class LoginView(View):
                 user = authenticate(username=username, password=password)
                 if user is not None:
                     login(request, user)
-                    write_login_logs(username=username, is_password="Y")
                     return HttpResponseRedirect('/document/')
                 else:
                     write_login_logs(username=username, is_password="N")
